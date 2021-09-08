@@ -1,16 +1,18 @@
 # blockchain-developer-bootcamp-final-project
-## Project name
+## Project Overview
+
+### Project Name
 Utilization of NFT (Non-fungible token)
 
-## What is the business case, area, or topic that this use case applies to?
+### What is the business case, area, or topic that this use case applies to?
 NFT secured loan
 
-## What problem am I trying to solve? What value will be created by solving this problem?
+### What problem am I trying to solve? What value will be created by solving this problem?
 Recently, marketplaces dealing with NFT such as digital art are popular, but it is only buying and selling NFT. 
 Since NFTs are valuable, NFT owners can also use them as collateral to borrow stable coin or other tokens. 
 This is to build a new market where NFT can be used more effectively.
 
-## Borrowing Contract Workflow
+### Borrowing Contract Workflow
 1. The exhibitor sets the desired maximum bid price for the NFT and puts it on the smart contract.
 2. Bidders bid the desired price.
 3. The exhibitor makes a successful bid at a price that meets the conditions.
