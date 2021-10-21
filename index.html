@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+            <meta charset = "UTF-8">
+            <title>Final Project App</title>
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+            <link href="style.css" rel="stylesheet">
+            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+            <style>
+                h3#offer {background-color:#FADBDA; padding:10px}
+                h3#bid {background-color:#EAF3FF; padding: 10px}
+            </style>
+        </head>
+
+
+        <body class="container">          
+            <h2>NFT Secured Loan</h2>      
+            <div class="text-right">
+                <h6>Network: <span class="showNetwork"></span><h6>
+            </div>    
+            
+            <h5><span>MESSAGE: </span></h5>
+            <h5>- <span id="phase_info"></span></h5>
+            <h5>- <span id="info"></span><h5>
+            <h5>- <span id="bid_info"></span><h5>
+            <br>
+
+            <h3 id="offer">OFFER</h3>
+            <p>The exhibitor sets the desired successful bid price for the NFT and puts it in the smart contract.</p>
+
+            <div id="repay_block" style="display:none">
+                <button type="submit" class="btn btn-danger btn-sm" id="button_repay" disabled onclick="repayFund()">Repay ETH</button>
+            </div>    
+            <p><span id="notice4"></span></p>    
+
+            <br>
+
+            <div id="cardExhibit" class="card">
+                <div class="card-header"><b>Exhibited NFT</b></div>
+                <div class="row">
+                    <div class="col">
+                        <div class="item-info" id="item_pic"></div>
+                    </div>
+                    <div class="col">
+                        <div class="item-info2">
+                        <h6>Author:  <span id="item_author"></span></h6>    
+                        <h6>Title: <span id="ex_title"></span></h5>
+                        <h6>Modified:  <span id="item_modified"></span></h6>
+                        <br>
+                        <h6>IPFS hash: <span id="item_picHash"></span></h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <br>
+
+            <h3 id="bid">BID</h3>
+            <p>Bidders bid the desired price.</p>
+
+            <form id="bidForm">
+                <div class="form-row">
+                    <div class="form-group col">    
+                        <label for="bidderName">Bidder</label>
+                        <input type="text" class="form-control" id="bidderName" placeholder="Your Name">    
+                    </div>   
+                    <div class="form-group col">
+                        <label for="bidAmount">Amount</label>
+                        <input type="number" step="0.001" class="form-control" id="bidAmount" min="0.001" placeholder="ETH">    
+                    </div>   
+                    <div class="form-group col">
+                        <label for="duration">Duration</label>
+                        <input type="number" class="form-control" id="duration" min="1" max="30" placeholder="days">
+                    </div>
+                    <div class="form-group col">
+                        <label for="amountReceivable">Amount Receivable</label>
+                        <input type="number" step="0.001" class="form-control" id="amountReceivable" min="0.001" placeholder="ETH">
+                    </div>
+                    <div class="form-group col">
+                        <label for="apr">APR [%]</label>
+                        <p id="apr"></p>
+                    </div>
+                </div> 
+            </form>
+
+            <div id="bid_block" style="display:none">
+                <button type="submit" class="btn btn-primary btn-sm" id="button_bidSubmit" disabled onclick="bid()">Submit</button>
+                <button type="submit" class="btn btn-primary btn-sm" id="button_withdrawETH" disabled onclick="withdrawEther()">Withdraw ETH</button>
+                <button type="submit" class="btn btn-primary btn-sm" id="button_withdrawNFT" disabled onclick="transferNFT()">Withdraw NFT</button>
+            </div>
+
+            <p><span id="notice2"></span></p>
+            <p><span id="info2"></span></p>
+            <p><span id="notice3"></span></p>
+
+            <br>
+
+            <div class="card" id="cardBidlist">
+                <div class="card-header"><b>Bid List</b></div>
+                    <table id="list" class="table">    
+                        <thead>
+                        <tr>
+                            <th>Bidded By</th>
+                            <th>Amount</th>
+                            <th>Duration</th>
+                            <th>Amount Receivable</th>
+                            <th>For Exhibitor</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+            </div>
+
+             
+            <script src="./deployed_info.js"></script>
+            <script>
+                window.onload = () => {
+                    if (typeof window.ethereum !== 'undefined') {
+                        ethereum.request({ method: 'eth_requestAccounts' }).then((accounts) => {    
+                            ethereum.on('accountsChanged', (accounts) => {
+                                location.reload(true);
+                            });
+                            init();
+                            getChainID();
+                        }).catch((err) => {
+                            document.getElementById('info').innerHTML = "Unable to connect to MetaMask.";
+                        });
+                    } else {
+                        document.getElementById('info').innerHTML = "MetaMask is not found.";
+                    }
+                }
+                
+                /* Initialize Dapp */
+                function init() {
+                    window.loan_contract = web3.eth.contract(sl_abi).at(sl_address);
+                    window.token_contract = web3.eth.contract(nft_abi).at(nft_address);
+                    window.loan_contract.exhibitorAddress.call((err, res) => {
+                        if(!err) {
+                            if(res == web3.eth.accounts[0]) {
+                                window.isExhibitor = true;
+                                document.getElementById("repay_block").style.display = "block";
+                                document.getElementById('info').innerHTML = '<font color="#dc3545">You are the exhibitor.</font>';
+                            } else {
+                                window.isExhibitor = false;
+                                document.getElementById("bid_block").style.display = "block";
+                                window.loan_contract.getBidderInfoByAddr.call(web3.eth.accounts[0], (err, res) => {
+                                    if(!err) {
+                                        window.bidName =　res[0];
+                                        window.bidBalance = parseInt(res[1]);
+                                        if(window.bidName == "") {
+                                            document.getElementById('info').innerHTML = '<font color="#007bff">You are a bidder. You have not bid.</font>';
+                                        } else {
+                                            document.getElementById('info').innerHTML = `<font color="#007bff">${window.bidName}, you have already bid.</font>`;
+                                        }
+                                    } else {
+                                        console.log("getBidderInfoByAddr err: " + err);
+                                    }
+                                });
+                            }
+                            mainLoop();
+                            setInterval(mainLoop, 2000);
+                        } else {
+                            console.log("exhibitorAddress err: " + err);
+                        }
+                    });
+                }              
+
+                function mainLoop() {
+                    getPhase();             // Get phase
+                    getExhibitInfo();       // Exhibit information
+                    getBiddersList();       // Bid information
+                }
+
+                /* Connect to MetaMask */
+                const ethereumButton = document.querySelector('.enableEthereumButton');
+                const showNetwork = document.querySelector('.showNetwork');
+
+                async function getChainID() {
+                    const chainid = await ethereum.request({ method: 'eth_chainId' });
+                    switch (chainid) {
+                        case "0x1":     showNetwork.innerHTML = "Mainnet";                break;
+                        case "0x3":     showNetwork.innerHTML = "Ropsten test network";   break;
+                        case "0x4":     showNetwork.innerHTML = "Rinkeby test network";   break;
+                        case "0x2a":    showNetwork.innerHTML = "Kovan test network";     break;
+                        default:        showNetwork.innerHTML = "Chain ID = " + chainid;
+                    }
+                }
+
+                /* Handle chain (network) and chainChanged (per EIP-1193) */
+                const chainId = ethereum.request({ method: 'eth_chainId' });
+                handleChainChanged(chainId);
+                ethereum.on('chainChanged', handleChainChanged);
+                function handleChainChanged(_chainId) {
+                    // I don't know why this keep calling here, so I'm going to suppress the reload
+                    let lastChainId = localStorage.getItem('lastChainId');
+                    if (lastChainId != _chainId) {
+                        localStorage.setItem('lastChainId', _chainId);
+                        // Reload the page when the network is changeed
+                        window.location.reload();
+                    }
+                }
+
+                /* Get phase. Phase are {exhibit, bid, bidend, repayed, expired, closed} */
+                function getPhase() {
+                    window.loan_contract.phase.call((err, res) => {
+                        if(!err) {
+                            window.phase = parseInt(res);
+                            switch(window.phase) {
+                                case 0:     // exhibit
+                                    document.getElementById('phase_info').innerHTML = 'It has not been exhibited yet.';
+                                    document.getElementById("bid_block").style.display = "none";
+                                    document.getElementById("cardExhibit").style.display = "none";
+                                    document.getElementById("cardBidlist").style.display = "none";
+                                    document.getElementById("bidForm").style.display = "none";
+                                    break;
+                                case 1:     // bid
+                                    document.getElementById('phase_info').innerHTML = 'Bidding is now open.';
+                                    document.getElementById("button_bidSubmit").disabled = false;
+                                    break;
+                                case 2:     // bidend
+                                    document.getElementById('phase_info').innerHTML = 'Successful bidder has been selected. If you are not successful in your bid, you can withdraw your ETH.';
+                                    document.getElementById("cardBidlist").style.display = "none";
+                                    document.getElementById("bidForm").style.display = "none";
+                                    document.getElementById("button_repay").disabled = false;
+                                    document.getElementById("button_bidSubmit").disabled = true;
+                                    document.getElementById("button_withdrawETH").disabled = false;
+                                    document.getElementById("button_withdrawNFT").disabled = false;
+                                    getSuccessfulBidInfo();
+                                    break;
+                                case 3:     // repayed
+                                    document.getElementById('phase_info').innerHTML = 'The fund have been repaid. The contract has been closed.';
+                                    document.getElementById("cardBidlist").style.display = "none";
+                                    document.getElementById("bidForm").style.display = "none";
+                                    document.getElementById("button_bidSubmit").disabled = true;
+                                    document.getElementById("button_withdrawETH").disabled = false;
+                                    document.getElementById("button_repay").disabled = true;
+                                    document.getElementById("button_withdrawNFT").disabled = true;
+                                    break;
+                                // case 4:     // expired
+                                //     document.getElementById('phase_info').innerHTML = 'The contract has expired.';
+                                //     document.getElementById("cardBidlist").style.display = "none";
+                                //     document.getElementById("bidForm").style.display = "none";
+                                //     document.getElementById("button_bidSubmit").disabled = true;
+                                //     document.getElementById("button_withdrawETH").disabled = false;
+                                //     document.getElementById("button_repay").disabled = true;
+                                //     document.getElementById("button_withdrawNFT").disabled = false;
+                                //     break; 
+                                case 4:     // close
+                                    document.getElementById('phase_info').innerHTML = 'NFT and ETH have been exchanged. The contract has been closed.';
+                                    document.getElementById("cardBidlist").style.display = "none";
+                                    document.getElementById("bidForm").style.display = "none";
+                                    document.getElementById("button_bidSubmit").disabled = true;
+                                    document.getElementById("button_withdrawETH").disabled = false;
+                                    document.getElementById("button_repay").disabled = true;
+                                    document.getElementById("button_withdrawNFT").disabled = true;
+                                    break;
+                            }
+                        } else {
+                            console.log("phase err:" + err);
+                        }
+                    });
+                }
+
+                // var bidderDuration;
+                var bidderReceivable;
+                /* Get successful bidder infomation */
+                function getSuccessfulBidInfo() {
+                    window.loan_contract.successfulBidderAddress.call((err, res) => {
+                        if(!err) {
+                            window.loan_contract.getBidderInfoByAddr.call(res, (err, res) => {
+                                if(!err) {
+                                    document.getElementById('bid_info').innerHTML = '<font color="#28a745">The successful bidder is ' + res[0] + '. Conditions: receive ' + web3.fromWei(res[3].toString(), 'ether')  + ' ETH after ' + res[2] + ' days.</font>';
+                                    bidderReceivable = web3.fromWei(res[3].toString());
+                                } else {
+                                    console.log("getBidderInfoByAddr err:" + err);
+                                }
+                            });    
+                        } else {
+                            console.log("successfulBidderAddress err:" + err);
+                        }
+                    });
+                }
+
+                /* Get exhibit NFT infomation */
+                function getExhibitInfo() {
+                    window.loan_contract.exhibitionTokenId.call((err, res) => {
+                        if(!err) {
+                            window.exhibitionTokenId = parseInt(res);
+                            window.token_contract.getExhibitParam.call(window.exhibitionTokenId, (err, res) => {
+                                if(!err) {
+                                    document.getElementById('ex_title').innerHTML = res[0];
+                                    var pic = '<img src="https://gateway.pinata.cloud/ipfs/' + res[3] + '"' + 'width="200"' + 'height="200"' + '/>';
+                                    var picHash = res[3];
+                                    document.getElementById('item_pic').innerHTML = pic;
+                                    document.getElementById('item_picHash').innerHTML = picHash;
+                                    document.getElementById('item_author').innerHTML = res[1];
+                                    document.getElementById('item_modified').innerHTML = res[2];
+                                } else {
+                                    console.log("getExhibitParam err: " + err);
+                                }
+                            });
+                        } else {
+                            console.log("exhibitionTokenId err: " + err);
+                        }
+                    });
+                }
+
+                /* Get bidders list */
+                function getBiddersList() {
+                    window.loan_contract.getBiddersNum.call((err, res) => {
+                        if(!err) {
+                            window.bidnum = parseInt(res);
+                            window.idx = 0;
+                            getBidInfo();
+                        } else {
+                            console.log("getBiddersNum err: " + err);
+                        }
+                    });
+                }
+
+                /* Get bid info */
+                function getBidInfo() {
+                    if(window.bidnum <= window.idx) return;
+                    window.loan_contract.getBidderInfoByIndex.call(window.idx, (err, res) => {
+                        if(!err) {
+                            updateBidList(res[0], res[1], res[2], res[3], res[4]);
+                            window.idx ++;
+                            getBidInfo();
+                        } else {
+                            console.log("getBidderInfoByIndex err: " + err);
+                        }
+                    });
+                }
+
+                /* Bidders submit their bids */
+                function bid() {
+                    window.loan_contract.getBidderInfoByAddr.call(web3.eth.accounts[0], (err, res) => {
+                        if(!err) {
+                            window.bidBalance = parseInt(res[1]);
+                            if(window.bidBalance == 0) {
+                                execFirstBid();
+                            } 
+                        } else {
+                            console.log("getBidderInfoByAddr err: " +err);
+                            location.reload(true);
+                        }
+                    });
+                }
+
+                // function firstBidForm() {
+                    // document.getElementById('d1_notice1').innerHTML = "新規";
+                    // document.getElementById('notice2').innerHTML = "";
+                    // document.getElementById('bidderName').value = "";
+                    // document.getElementById('bidAmount').value = "";
+                    // document.getElementById('bidderName').disabled = false;
+                    // document.getElementById('bidAmount').disabled = false;
+                    // document.getElementById('d1_done').disabled = false;
+                    // var dialog = document.getElementById('d1_dialog');
+                    // var btn_done = document.getElementById('d1_done');
+                    // btn_done.addEventListener('click', execFirstBid);
+                    // dialog.addEventListener('cancel', (event) => {
+                    //     btn_done.removeEventListener('click', execFirstBid);
+                    //     document.getElementById('d1_dialog').close();
+                    // });
+                    // dialog.showModal();
+                    // execFirstBid();
+                // }
+
+                /* OK */
+                function execFirstBid() {
+                    var regist_name = document.getElementById('bidderName').value;
+                    var ether = document.getElementById('bidAmount').value;
+                    var duration = document.getElementById('duration').value;
+                    var receivable = document.getElementById('amountReceivable').value;
+                    var wei = parseInt(web3.toWei(ether, 'ether'));
+                    var weiReceivable = parseInt(web3.toWei(receivable, 'ether'));
+                    if(regist_name == "" || wei == 0 || ether > receivable) {
+                        return;
+                    }
+                    window.loan_contract.firstBid.sendTransaction(regist_name, duration, weiReceivable, {from:web3.eth.accounts[0], value: wei, gas:5500000}, (err, res) => {    
+                        if(!err) {
+                            document.getElementById('notice2').innerHTML = '<br><div class="alert alert-success" role="alert">You have been bid on. Please wait until it is confirmed...</div>';
+                            window.bidName = regist_name;
+                            waitBidDone();
+                        } else {
+                            console.log("firstBid err:" + err);
+                        }
+                    });
+                }
+
+                function waitBidDone() {
+                    console.log("waitBidDone - start");
+                    window.loan_contract.getBidderInfoByAddr.call(web3.eth.accounts[0], (err, res) => {
+                        if(!err) {
+                            console.log("res:" + res[0] + parseInt(res[1]));
+                            if(parseInt(res[1]) > window.bidBalance) {
+                                console.log("Successful!" + window.bidBalance + " => " + res[1]);
+                                location.reload(true);
+                                document.getElementById('notice2').innerHTML = "";
+                            } else {
+                                console.log("Wait...");
+                                setTimeout(waitBidDone, 1000);
+                            }
+                        } else {
+                            console.log("getBidderInfoByAddr err:" + err);
+                            document.getElementById('notice2').innerHTML = "";
+                        }
+                    });
+                } 
+
+                function getId(elementAddr) {
+                    var addr = document.getElementById('list').rows[elementAddr.parentNode.parentNode.rowIndex].id;
+                    var duration = document.getElementById('list').rows[elementAddr.parentNode.parentNode.rowIndex].cells[2].firstChild.data;
+                    bidEnd(addr, duration);
+                }
+
+                function bidEnd(addr, duration) {
+                    window.loan_contract.borrowFund.sendTransaction(addr, duration, {from:web3.eth.accounts[0], gas:5500000}, (err, res) => {
+                        if(!err) {
+                            console.log("bidEnd: ");
+                            document.getElementById('notice3').innerHTML = '<br><div class="alert alert-success" role="alert">You made a successful bid. Please wait until it is confirmed...</div>';
+                            bidEndWait(); 
+                        } else {
+                            console.log("bidEnd err: " + err);
+                            location.reload(true);
+                        }
+                    });
+                }
+
+                function bidEndWait() {
+                    window.loan_contract.phase.call((err, res) => {
+                        if(!err) {
+                            window.phase = parseInt(res);
+                            if(window.phase > 1) {
+                                console.log("bidEndWait: Bidding is OK.");
+                                location.reload(true);
+                            } else {
+                                console.log("bidEndWait: Checking...");
+                                setTimeout(bidEndWait, 2000);
+                            }
+                        } else {
+                            console.log("phase err: " + err);
+                            location.reload(true);
+                        }
+                    });
+                }
+
+                function repayFund() {
+                    var weibidderReceivable = parseInt(web3.toWei(bidderReceivable, 'ether'));
+                    window.loan_contract.repayFund.sendTransaction({from:web3.eth.accounts[0], value: weibidderReceivable, gas:5500000}, (err, res) => {        
+                        if(!err) {
+                            console.log("repayed: ");
+                            document.getElementById('notice4').innerHTML = '<br><div class="alert alert-success" role="alert">You have repaid the fund.</div>';
+                        } else {
+                            console.log("repay err: " + err);
+                            document.getElementById('notice4').innerHTML = '<br><div class="alert alert-warning" role="alert">You cannot repay the fund. Check the repayment amount or due date.</div>';
+                        }
+                    });
+                }
+
+                function transferNFT() {
+                    window.loan_contract.transferNFT.sendTransaction({from:web3.eth.accounts[0], gas:5500000}, (err, res) => {
+                        if(!err) {
+                            console.log("transferNFT: ");
+                            document.getElementById('info2').innerHTML = '<div class="alert alert-success" role="alert">The NFT has been transferred to you. Please wait for a while for it to be reflected.</div>';
+                        } else {
+                            console.log("transferNFT err: " + err);
+                            location.reload(true);
+                        }
+                    });
+                }
+
+                function withdrawEther() {
+                    window.loan_contract.getBidderInfoByAddr.call(web3.eth.accounts[0], (err, res) => {
+                        if(!err) {
+                            if(parseInt(res[1]) == 0) {
+                                document.getElementById('info2').innerHTML = '<div class="alert alert-warning" role="alert">You have not deposited the Ether.</div>';
+                            } else {
+                                document.getElementById("button_withdrawETH").disabled = true;
+                                window.loan_contract.withDrawBidders.sendTransaction({from:web3.eth.accounts[0], gas:5500000}, (err, res) => {
+                                    if(!err) {
+                                        console.log("withDrawBidders: OK");
+                                        document.getElementById('info2').innerHTML = '<div class="alert alert-warning" role="alert">The Ether you deposited has been refunded to you. Please wait for a while for it to be reflected.</div>';
+                                    } else {
+                                        console.log("withDrawBidders err: " + err);
+                                        location.reload(true);
+                                    }
+                                });
+                            }
+                        } else {
+                            console.log("getBidderInfoByAddr err: " + err);
+                        }
+                    });
+                }
+
+                var g_append_wei = [];
+                function updateBidList(address, name, wei, duration, weiReceivable) {
+                    if(document.getElementById(address) != null) {
+                        var isFlash = (g_append_wei[address] != wei.toString()) ? true : false;
+                        document.getElementById(`${address}`).innerHTML = makeMessage(name, wei, duration, weiReceivable, isFlash);
+                        if(isFlash) g_append_wei[address] = wei;
+                        return;
+                    }
+                    g_append_wei[address] = wei;
+                    appendList(address, name, wei, duration, weiReceivable);
+                }
+
+                function appendList(address, name, wei, duration, weiReceivable) {
+                    var msg = makeMessage(name, wei, duration, weiReceivable);
+                    var tip = `address=[${address}] name=[${name}]`;
+                    var parent = document.getElementById('list');
+                    var newChild = `<tr id='${address}' title='${tip}'>${msg}</tr>`;
+                    parent.insertAdjacentHTML('beforeend', newChild);
+                }
+
+                function makeMessage(name, wei, duration, weiReceivable, isFlash) {
+                    var ether = web3.fromWei(wei.toString(), 'ether');
+                    var etherReceivable = web3.fromWei(weiReceivable.toString(), 'ether');
+                    if(isFlash) {
+                        return `<td>${name}</td>
+                        <td class="flash">${ether}</td>
+                        <td>${duration}</td>
+                        <td>${etherReceivable}</td>
+                        <td><button type="submit" class="btn btn-info btn-sm" id="button_exClose" onclick="getId(this)">Accept</button></td>`;
+                    }
+                    return `<td>${name}</td>
+                        <td>${ether}</td>
+                        <td>${duration}</td>
+                        <td>${etherReceivable}</td>
+                        <td><button type="submit" class="btn btn-info btn-sm" id="button_exClose" onclick="getId(this)">Accept</button></td>`;
+                    }
+
+                function updateBidField(){
+                    var result = Math.floor(($('#amountReceivable').val() / $('#bidAmount').val() -1) * 100 / $('#duration').val() * 365 * 100) / 100;
+                    $('#apr').text(result);
+                }
+                $(function() {
+                    $('input[type="number"]').on('keyup change', function() {
+                        updateBidField();
+                    });
+                });
+            </script>
+        </body>
+    </html>

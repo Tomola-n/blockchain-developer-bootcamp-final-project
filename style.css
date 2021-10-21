@@ -1,0 +1,16 @@
+.item-info{
+    /* width: 100%;
+    height: 100%; */
+    margin: 15px 0px 15px 90px;
+}
+
+.item-info2{
+  /* width: 100%;
+  height: 100%; */
+  margin: 15px 0px 10px -200px;
+}
+
+.flash{
+  animation: flash 0.2s linear alternate;
+  animation-iteration-count: 10;
+}

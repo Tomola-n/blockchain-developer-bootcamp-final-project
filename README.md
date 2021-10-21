@@ -13,7 +13,7 @@ Since NFTs are valuable, NFT owners can also use them as collateral to borrow st
 This is to build a new market where NFT can be used more effectively.
 
 ### Borrowing Contract Workflow
-1. The exhibitor sets the desired maximum bid price for the NFT and puts it on the smart contract.
+1. The exhibitor sets the desired successful bid price for the NFT and puts it in the smart contract.
 2. Bidders bid the desired price.
 3. The exhibitor can cancel the exhibit.
 4. Bidders can cancel the bid.
