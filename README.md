@@ -43,5 +43,5 @@ This is to build a new market where NFT can be used more effectively.
 │  &emsp;&emsp;    2_deploy.js  
 │  
 └─test  
-   &emsp;&emsp;     1_SecuredLoan_test.js  &emsp;&emsp;&nbsp;# NFT secured loan test file  
-   &emsp;&emsp;     2_NFToken_test.js  &emsp;&emsp;&emsp;&emsp;&nbsp;# minted NFT test file  
+&nbsp;   &emsp;&emsp;     1_SecuredLoan_test.js  &emsp;&emsp;&nbsp;# NFT secured loan test file  
+&nbsp;   &emsp;&emsp;     2_NFToken_test.js  &emsp;&emsp;&emsp;&emsp;# minted NFT test file  
