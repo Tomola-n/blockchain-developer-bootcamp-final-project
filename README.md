@@ -25,23 +25,23 @@ This is to build a new market where NFT can be used more effectively.
 10. If there is no repayment from the exhibitor at the time of contract expiration, the successful bidder can withdraw the NFT from the smart contract.
 
 ## Project Directory Structure
-│  deployed_info.js                     # deployed information including contract address and abi file
-│  finalproject.js                      # create Web server for localhost: 3000
-│  index.html                           # frontend interface
-│  package-lock.json
-│  README.md                            # this file
-│  style.css                            # frontend interface
-│  truffle-config.js
+│  deployed_info.js             # deployed information including contract address and abi file  
+│  finalproject.js              # create Web server for localhost: 3000  
+│  index.html                   # frontend interface  
+│  package-lock.json  
+│  README.md                    # this file  
+│  style.css                    # frontend interface  
+│  truffle-config.js  
 │  
-├─contracts
-│      Migrations.sol                   
-│      NFToken.sol                      # mint NFT contract for SecuredLoan.sol
-│      SecuredLoan.sol                  # implement NFT secured loan contract
+├─contracts  
+│      Migrations.sol                     
+│      NFToken.sol              # mint NFT contract for SecuredLoan.sol  
+│      SecuredLoan.sol          # implement NFT secured loan contract  
 │      
-├─migrations
+├─migrations  
 │      1_initial_migration.js           
 │      2_deploy.js
-│
-└─test
-        1_SecuredLoan_test.js           # NFT secured loan test file
-        2_NFToken_test.js               # minted NFT test file
+│  
+└─test  
+        1_SecuredLoan_test.js   # NFT secured loan test file  
+        2_NFToken_test.js       # minted NFT test file  
