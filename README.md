@@ -29,19 +29,19 @@ This is to build a new market where NFT can be used more effectively.
 │  finalproject.js  &emsp;&emsp;&emsp;&emsp;&emsp;# create Web server for localhost: 3000  
 │  index.html  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;# frontend interface  
 │  package-lock.json  
-│  README.md                    # this file  
-│  style.css                    # frontend interface  
+│  README.md  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;# this file  
+│  style.css  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;# frontend interface  
 │  truffle-config.js  
 │  
 ├─contracts  
 │      Migrations.sol                     
-│      NFToken.sol              # mint NFT contract for SecuredLoan.sol  
-│      SecuredLoan.sol          # implement NFT secured loan contract  
+│      NFToken.sol  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;# mint NFT contract for SecuredLoan.sol  
+│      SecuredLoan.sol  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;# implement NFT secured loan contract  
 │      
 ├─migrations  
 │      1_initial_migration.js           
 │      2_deploy.js  
 │  
 └─test  
-        1_SecuredLoan_test.js   # NFT secured loan test file  
-        2_NFToken_test.js       # minted NFT test file  
+        1_SecuredLoan_test.js  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;# NFT secured loan test file  
+        2_NFToken_test.js  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;# minted NFT test file  
