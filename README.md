@@ -45,3 +45,6 @@ This is to build a new market where NFT can be used more effectively.
 └─test  
 &nbsp;   &emsp;&emsp;     1_SecuredLoan_test.js  &emsp;&emsp;&nbsp;# NFT secured loan test file  
 &nbsp;   &emsp;&emsp;     2_NFToken_test.js  &emsp;&emsp;&emsp;&emsp;# minted NFT test file  
+
+## Public Ethereum Address
+0x15a90bfF905908AceFb858681d1Be35C60C2FE04
