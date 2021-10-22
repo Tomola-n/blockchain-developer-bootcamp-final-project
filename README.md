@@ -34,14 +34,14 @@ This is to build a new market where NFT can be used more effectively.
 │  truffle-config.js  
 │  
 ├─contracts  
-│      Migrations.sol                     
-│      NFToken.sol  &emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;# mint NFT contract for SecuredLoan.sol  
-│      SecuredLoan.sol  &emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;# implement NFT secured loan contract  
+│  &emsp;&emsp;    Migrations.sol                     
+│  &emsp;&emsp;    NFToken.sol  &emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;# mint NFT contract for SecuredLoan.sol  
+│  &emsp;&emsp;    SecuredLoan.sol  &emsp;&emsp;&emsp;&nbsp;&nbsp;# implement NFT secured loan contract  
 │      
 ├─migrations  
-│      1_initial_migration.js           
-│      2_deploy.js  
+│  &emsp;&emsp;    1_initial_migration.js           
+│  &emsp;&emsp;    2_deploy.js  
 │  
 └─test  
-        1_SecuredLoan_test.js  &emsp;&emsp;&nbsp;# NFT secured loan test file  
-        2_NFToken_test.js  &emsp;&emsp;&emsp;&emsp;# minted NFT test file  
+   &emsp;&emsp;     1_SecuredLoan_test.js  &emsp;&emsp;&nbsp;# NFT secured loan test file  
+   &emsp;&emsp;     2_NFToken_test.js  &emsp;&emsp;&emsp;&emsp;&nbsp;# minted NFT test file  
