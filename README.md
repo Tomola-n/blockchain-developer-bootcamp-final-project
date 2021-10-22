@@ -27,15 +27,15 @@ This is to build a new market where NFT can be used more effectively.
 ## Project Directory Structure
 │  deployed_info.js  &emsp;&emsp;&emsp;&emsp;# deployed information including contract address and abi file  
 │  finalproject.js  &emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;# create Web server for localhost: 3000  
-│  index.html  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;# frontend interface  
+│  index.html  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;# frontend interface  
 │  package-lock.json  
-│  README.md  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;# this file  
-│  style.css  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;# frontend interface  
+│  README.md  &emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;# this file  
+│  style.css  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;# frontend interface  
 │  truffle-config.js  
 │  
 ├─contracts  
 │      Migrations.sol                     
-│      NFToken.sol  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;# mint NFT contract for SecuredLoan.sol  
+│      NFToken.sol  &emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;# mint NFT contract for SecuredLoan.sol  
 │      SecuredLoan.sol  &emsp;&emsp;&emsp;&emsp;# implement NFT secured loan contract  
 │      
 ├─migrations  
@@ -43,5 +43,5 @@ This is to build a new market where NFT can be used more effectively.
 │      2_deploy.js  
 │  
 └─test  
-        1_SecuredLoan_test.js  &emsp;&emsp;&emsp;# NFT secured loan test file  
-        2_NFToken_test.js  &emsp;&emsp;&emsp;&emsp;&emsp;# minted NFT test file  
+        1_SecuredLoan_test.js  &emsp;&emsp;&nbsp;# NFT secured loan test file  
+        2_NFToken_test.js  &emsp;&emsp;&emsp;&emsp;&nbsp;# minted NFT test file  
