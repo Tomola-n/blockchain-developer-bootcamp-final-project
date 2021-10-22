@@ -26,10 +26,10 @@ This is to build a new market where NFT can be used more effectively.
 
 ## Project Directory Structure
 │  deployed_info.js  &emsp;&emsp;&emsp;&emsp;# deployed information including contract address and abi file  
-│  finalproject.js  &emsp;&emsp;&emsp;&emsp;&emsp;# create Web server for localhost: 3000  
-│  index.html  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;# frontend interface  
+│  finalproject.js  &emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;# create Web server for localhost: 3000  
+│  index.html  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;# frontend interface  
 │  package-lock.json  
-│  README.md  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;# this file  
+│  README.md  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;# this file  
 │  style.css  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;# frontend interface  
 │  truffle-config.js  
 │  
