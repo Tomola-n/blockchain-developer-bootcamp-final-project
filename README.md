@@ -26,8 +26,8 @@ This is to build a new market where NFT can be used more effectively.
 
 ## Project Directory Structure
 │  deployed_info.js  &emsp;&emsp;&emsp;&emsp;# deployed information including contract address and abi file  
-│  finalproject.js  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# create Web server for localhost: 3000  
-│  index.html  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# frontend interface  
+│  finalproject.js  &emsp;&emsp;&emsp;&emsp;# create Web server for localhost: 3000  
+│  index.html  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;# frontend interface  
 │  package-lock.json  
 │  README.md                    # this file  
 │  style.css                    # frontend interface  
