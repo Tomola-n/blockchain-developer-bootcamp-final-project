@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: GPL-2.0
 pragma solidity >=0.4.21 <0.9.0;
 import "openzeppelin-solidity/contracts/token/ERC721/ERC721Full.sol";
 import "openzeppelin-solidity/contracts/token/ERC721/ERC721Mintable.sol";

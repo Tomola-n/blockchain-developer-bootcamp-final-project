@@ -1,5 +1,9 @@
+// SPDX-License-Identifier: GPL-2.0
 pragma solidity >=0.5.0 <0.9.0;
 import "openzeppelin-solidity/contracts/token/ERC721/IERC721.sol";
+
+/// @title NFT secured loan
+/// @author T. Nakagawa
 
 contract SecuredLoan {
     
@@ -25,6 +29,7 @@ contract SecuredLoan {
     event BidLog(address bidder, string name, uint addvalue);
     event WidhDrawETHLog(address from, address to, uint value);
 
+    /// @notice 
     modifier atPhase(phases _phase) {
         require(phase == _phase);
         _;
@@ -49,7 +54,6 @@ contract SecuredLoan {
 
     // 1. The exhibitor sets the desired successful bid price for the NFT 
     // and puts it in the smart contract.
-    // function exhibitNFT(address _exhibitor, uint256 _tokenId, uint _exhibitPrice, uint _duration, uint _repaymentAmount) public {
     function exhibitNFT(address _addr, uint256 _tokenId) public atPhase(phases.exhibit) {
         // accepts the exhibit  
         set721ContractAddress(_addr);
@@ -72,8 +76,6 @@ contract SecuredLoan {
     }
 
     // 2. Bidders bid the desired price.
-    // function bid(address _bidder, uint bidPrice, uint _duration, uint _billingAmount) public {
-    // function firstBid(string memory _name) public payable {
     function firstBid(string memory _name, uint _duration, uint _receivable) public payable {        
         // bids on the exhibited NFT
         require(bidderBalance[msg.sender] == 0);
@@ -104,24 +106,11 @@ contract SecuredLoan {
     }
 
     // 3. The exhibitor can cancel the exhibit.
-    // function cancelExhibit() public {
-
-        // cancels the exhibit
-        // retrieves the NFT deposited in the smart contract
-
-    // }
+    
 
     // 5. The exhibitor makes a successful bid at a price that meets the conditions.
-    // function successfulBid() public {
-    // function closeAuction() public atPhase(phases.bid) {
-    //     // makes a successful bid for a NFT
-    //     require(exhibitorAddress == msg.sender);
-    //     (successfulBidderAddress,,) = calcHighestBidder();
-    //     phase = phases.bidend;
-    // }    
-
+    
     // 4. Bidders can cancel the bid.
-    // function cancelBid() public {
     function withDrawBidders() public atPhase(phases.bidend) {
         // cancels the bid
         // retrieves the Ether deposited in the smart contract
@@ -153,18 +142,8 @@ contract SecuredLoan {
     }
 
     // 7. The NFT is deposited as collateral in the smart contract.
-    // function depositNFT() public {
-
-        // deposits a NFT in the smart contract
-
-    //}
-
-    // function expired() public atPhase(phases.bidend) {
-    //     phase = phases.expired;
-    // }
-
+    
     // 8. The exhibitor repays the borrowed fund and interest to the successful bidder.
-    // function repayFund(uint _repayment) public payable atPhase(phases.bidend) checkTime(bidderDuration[successfulBidderAddress]) {    
     function repayFund() public payable atPhase(phases.bidend) checkTime(bidderDuration[successfulBidderAddress]) {
         // repays a fund to the successful bidder
         require(exhibitorAddress == msg.sender);
@@ -174,15 +153,9 @@ contract SecuredLoan {
     }
 
     // 9. When the contract expires (e.g. overnight loan), the exhibitor cannot withdraw NFT.
-    // function expireContract(uint _duration) public {
-    //     // prohibits the exhibitor from withdrawing the NFT
-
-    //     phase = phase.xxxxx;
-    // }
-
+    
     // 10. If there is no repayment from the exhibitor at the time of contract expiration, 
     // the successful bidder can withdraw the NFT from the smart contract.
-    // function withdrawNFT() public {
     function transferNFT() public atPhase(phases.bidend) expireTime(bidderDuration[successfulBidderAddress]) {
         // withdraws the NFT from the smart contract.
         require(successfulBidderAddress == msg.sender);

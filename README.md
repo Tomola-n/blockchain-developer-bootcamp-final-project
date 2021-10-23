@@ -12,17 +12,16 @@ Recently, marketplaces dealing with NFT such as digital art are popular, but it 
 Since NFTs are valuable, NFT owners can also use them as collateral to borrow stable coin or other tokens. 
 This is to build a new market where NFT can be used more effectively.
 
-### Borrowing Contract Workflow
-1. The exhibitor sets the desired successful bid price for the NFT and puts it in the smart contract.
+### Loan Contract Workflow
+1. The exhibitor puts the NFT in the smart contract.
 2. Bidders bid the desired price.
-3. The exhibitor can cancel the exhibit.
+3. The exhibitor makes a successful bid at a price and duration that meets the conditions.
 4. Bidders can cancel the bid.
-5. The exhibitor makes a successful bid at a price that meets the conditions.
-6. At the same time as the successful bid, the exhibitor can borrow a fund from the successful bidder, where the fee (e.g. 1%) to the administrator is deducted from the successful bid amount.
-7. The NFT is deposited as collateral in the smart contract.
-8. The exhibitor repays the borrowed fund and interest to the successful bidder.
-9. When the contract expires (e.g. overnight loan), the exhibitor cannot withdraw NFT.
-10. If there is no repayment from the exhibitor at the time of contract expiration, the successful bidder can withdraw the NFT from the smart contract.
+5. At the same time as the successful bid, the exhibitor can borrow a fund from the successful bidder, where the fee (e.g. 1%) to the administrator is deducted from the successful bid amount.
+6. The NFT is deposited as collateral in the smart contract.
+7. The exhibitor repays the borrowed fund and interest to the successful bidder.
+8. When the contract expires (e.g. overnight loan), the exhibitor cannot withdraw NFT.
+9. If there is no repayment from the exhibitor at the time of contract expiration, the successful bidder can withdraw the NFT from the smart contract.
 
 ## Project Directory Structure
 │  deployed_info.js  &emsp;&emsp;&emsp;&emsp;# deployed information including contract address and abi file  
@@ -46,5 +45,5 @@ This is to build a new market where NFT can be used more effectively.
 &nbsp;   &emsp;&emsp;     1_SecuredLoan_test.js  &emsp;&emsp;&nbsp;# NFT secured loan test file  
 &nbsp;   &emsp;&emsp;     2_NFToken_test.js  &emsp;&emsp;&emsp;&emsp;# minted NFT test file  
 
-## Public Ethereum Address
+## Public Ethereum Address for my certification
 0x15a90bfF905908AceFb858681d1Be35C60C2FE04
