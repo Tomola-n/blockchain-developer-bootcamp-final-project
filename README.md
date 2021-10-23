@@ -16,12 +16,10 @@ This is to build a new market where NFT can be used more effectively.
 1. The exhibitor puts the NFT in the smart contract.
 2. Bidders bid the desired price.
 3. The exhibitor makes a successful bid at a price and duration that meets the conditions.
-4. Bidders can cancel the bid.
-5. At the same time as the successful bid, the exhibitor can borrow a fund from the successful bidder, where the fee (e.g. 1%) to the administrator is deducted from the successful bid amount.
-6. The NFT is deposited as collateral in the smart contract.
-7. The exhibitor repays the borrowed fund and interest to the successful bidder.
-8. When the contract expires (e.g. overnight loan), the exhibitor cannot withdraw NFT.
-9. If there is no repayment from the exhibitor at the time of contract expiration, the successful bidder can withdraw the NFT from the smart contract.
+4. Bidders can cancel their bids and withdraw their ETH. 
+5. At the same time as the successful bid, the exhibitor can borrow a fund from the successful bidder, where the fee (5%) to the administrator is deducted from the successful bid amount.
+6. The exhibitor repays the borrowed fund and interest to the successful bidder.
+7. If there is no repayment from the exhibitor at the time of contract expiration, the successful bidder can withdraw the NFT from the smart contract.
 
 ## Project Directory Structure
 │  deployed_info.js  &emsp;&emsp;&emsp;&emsp;# deployed information including contract address and abi file  

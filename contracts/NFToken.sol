@@ -3,6 +3,9 @@ pragma solidity >=0.4.21 <0.9.0;
 import "openzeppelin-solidity/contracts/token/ERC721/ERC721Full.sol";
 import "openzeppelin-solidity/contracts/token/ERC721/ERC721Mintable.sol";
 
+/// @title NFT secured loan
+/// @author T. N
+
 contract NFToken is ERC721Full, ERC721Mintable {
     
     struct ExhibitParam {
