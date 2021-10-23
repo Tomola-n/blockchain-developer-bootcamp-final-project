@@ -21,8 +21,10 @@ This is to build a new market where NFT can be used more effectively.
 6. The exhibitor repays the borrowed fund and interest to the successful bidder.
 7. If there is no repayment from the exhibitor at the time of contract expiration, the successful bidder can withdraw the NFT from the smart contract.
 
-## Project Directory Structure
+## Project Directory Structure  
+│  avoiding_common_attacks.md  # my security measures
 │  deployed_info.js  &emsp;&emsp;&emsp;&emsp;# deployed information including contract address and abi file  
+│  design_pattern_decisions.md  # my design patterns
 │  finalproject.js  &emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;# create Web server for localhost: 3000  
 │  index.html  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;# frontend interface  
 │  package-lock.json  
