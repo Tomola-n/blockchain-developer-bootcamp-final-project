@@ -26,7 +26,6 @@ This is to build a new market where NFT can be used more effectively.
 │  deployed_address.txt  &emsp;&emsp;# the testnet address and network where your contract(s) have been deployed  
 │  deployed_info.js  &emsp;&emsp;&emsp;&emsp;# deployed information including contract address and abi file  
 │  design_pattern_decisions.md  &emsp;&nbsp;# my design patterns  
-│  finalproject.js  &emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;# create Web server for localhost: 3000  
 │  index.html  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;# frontend interface  
 │  package-lock.json  
 │  README.md  &emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;# this file  
