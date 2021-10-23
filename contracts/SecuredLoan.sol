@@ -161,4 +161,5 @@ contract SecuredLoan {
         bidderBalance[successfulBidderAddress] = 0;
         phase = phases.closed;
     }
+    
 }

@@ -239,15 +239,6 @@
                                     document.getElementById("button_repay").disabled = true;
                                     document.getElementById("button_withdrawNFT").disabled = true;
                                     break;
-                                // case 4:     // expired
-                                //     document.getElementById('phase_info').innerHTML = 'The contract has expired.';
-                                //     document.getElementById("cardBidlist").style.display = "none";
-                                //     document.getElementById("bidForm").style.display = "none";
-                                //     document.getElementById("button_bidSubmit").disabled = true;
-                                //     document.getElementById("button_withdrawETH").disabled = false;
-                                //     document.getElementById("button_repay").disabled = true;
-                                //     document.getElementById("button_withdrawNFT").disabled = false;
-                                //     break; 
                                 case 4:     // close
                                     document.getElementById('phase_info').innerHTML = 'NFT and ETH have been exchanged. The contract has been closed.';
                                     document.getElementById("cardBidlist").style.display = "none";
@@ -264,7 +255,6 @@
                     });
                 }
 
-                // var bidderDuration;
                 var bidderReceivable;
                 /* Get successful bidder infomation */
                 function getSuccessfulBidInfo() {
@@ -349,25 +339,6 @@
                         }
                     });
                 }
-
-                // function firstBidForm() {
-                    // document.getElementById('d1_notice1').innerHTML = "新規";
-                    // document.getElementById('notice2').innerHTML = "";
-                    // document.getElementById('bidderName').value = "";
-                    // document.getElementById('bidAmount').value = "";
-                    // document.getElementById('bidderName').disabled = false;
-                    // document.getElementById('bidAmount').disabled = false;
-                    // document.getElementById('d1_done').disabled = false;
-                    // var dialog = document.getElementById('d1_dialog');
-                    // var btn_done = document.getElementById('d1_done');
-                    // btn_done.addEventListener('click', execFirstBid);
-                    // dialog.addEventListener('cancel', (event) => {
-                    //     btn_done.removeEventListener('click', execFirstBid);
-                    //     document.getElementById('d1_dialog').close();
-                    // });
-                    // dialog.showModal();
-                    // execFirstBid();
-                // }
 
                 /* OK */
                 function execFirstBid() {
