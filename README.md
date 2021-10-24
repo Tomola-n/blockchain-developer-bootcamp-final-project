@@ -23,27 +23,27 @@ This is to build a new market where NFT can be used more effectively.
 
 ## Project Directory Structure  
 │  avoiding_common_attacks.md  &emsp;# my security measures  
-│  deployed_address.txt  &emsp;&emsp;# the testnet address and network where your contract(s) have been deployed  
-│  deployed_info.js  &emsp;&emsp;&emsp;&emsp;# deployed information including contract address and abi file  
-│  design_pattern_decisions.md  &emsp;&nbsp;# my design patterns  
-│  index.html  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;# frontend interface  
+│  deployed_address.txt  &emsp;&emsp;&emsp;&emsp;&emsp;# the testnet address and network where your contract(s) have been deployed  
+│  deployed_info.js  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;# deployed information including contract address and abi file  
+│  design_pattern_decisions.md  &emsp;&nbsp;&nbsp;# my design patterns  
+│  index.html  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;# frontend interface  
 │  package-lock.json  
-│  README.md  &emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;# this file  
-│  style.css  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;# frontend interface  
+│  README.md  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;# this file  
+│  style.css  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;# frontend interface  
 │  truffle-config.js  
 │  
 ├─contracts  
 │  &emsp;&emsp;    Migrations.sol                     
-│  &emsp;&emsp;    NFToken.sol  &emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;# mint NFT contract for SecuredLoan.sol  
-│  &emsp;&emsp;    SecuredLoan.sol  &emsp;&emsp;&emsp;&nbsp;&nbsp;# implement NFT secured loan contract  
+│  &emsp;&emsp;    NFToken.sol  &emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# mint NFT contract for SecuredLoan.sol  
+│  &emsp;&emsp;    SecuredLoan.sol  &emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;# implement NFT secured loan contract  
 │      
 ├─migrations  
 │  &emsp;&emsp;    1_initial_migration.js           
-│                  2_deploy.js  
+│  &emsp;&emsp;                2_deploy.js  
 │  
 └─test  
-&nbsp;   &emsp;&emsp;     1_SecuredLoan_test.js  &emsp;&emsp;&nbsp;# NFT secured loan test file  
-&nbsp;   &emsp;&emsp;     2_NFToken_test.js  &emsp;&emsp;&emsp;&emsp;# minted NFT test file  
+&nbsp;&emsp;&emsp;&emsp;     1_SecuredLoan_test.js  &emsp;&emsp;# NFT secured loan test file  
+&nbsp;&emsp;&emsp;&emsp;     2_NFToken_test.js  &emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;# minted NFT test file  
 
 ## Public Ethereum Address for my certification
 0x15a90bfF905908AceFb858681d1Be35C60C2FE04

@@ -14,7 +14,7 @@ contract SecuredLoan {
     phases public phase = phases.exhibit;
     
     address payable public exhibitorAddress;
-    uint256 public exhibitionTokenId;
+    uint public exhibitionTokenId;
     uint public exhibitorBalance;
     
     address[] biddersList;
@@ -57,7 +57,7 @@ contract SecuredLoan {
 
     /// @notice 1. The exhibitor puts the NFT in the smart contract.
     /// @dev Accept the exhibit. Move phase from exhibit to bid. 
-    function exhibitNFT(address _addr, uint256 _tokenId) public atPhase(phases.exhibit) {
+    function exhibitNFT(address _addr, uint _tokenId) public atPhase(phases.exhibit) {
         set721ContractAddress(_addr);
         if(checkApproved(_tokenId) == address(this)) {
             exhibitionTokenId = _tokenId;
@@ -70,7 +70,7 @@ contract SecuredLoan {
         finalProjectNFT = IERC721(_addr);
     }
 
-    function checkApproved(uint256 _tokenId) public view returns (address) {
+    function checkApproved(uint _tokenId) public view returns (address) {
         if(address(finalProjectNFT) != address(0)) {
             return finalProjectNFT.getApproved(_tokenId);
         }
@@ -80,6 +80,8 @@ contract SecuredLoan {
     /// @notice 2. Bidders bid the desired price.
     function firstBid(string memory _name, uint _duration, uint _receivable) public payable {        
         require(bidderBalance[msg.sender] == 0);
+        require(_duration <= 30);
+        require(_receivable <= 2000);
         addBid();
         bidderName[msg.sender] = _name;
         bidderDuration[msg.sender] = _duration;
