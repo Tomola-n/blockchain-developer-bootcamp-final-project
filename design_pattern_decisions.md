@@ -1,6 +1,7 @@
 # Design Pattern Decisions
-Here, we describe two design patterns, 
-access control design patterns and inheritance and interfaces.
+Here, we describe two design patterns:  
+- Access control design patterns,
+- Inheritance and interfaces.
 
 
 ## Access Control Design Patterns

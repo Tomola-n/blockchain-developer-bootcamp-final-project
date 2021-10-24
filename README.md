@@ -39,7 +39,7 @@ This is to build a new market where NFT can be used more effectively.
 │      
 ├─migrations  
 │  &emsp;&emsp;    1_initial_migration.js           
-│  &emsp;&emsp;    2_deploy.js  
+│                  2_deploy.js  
 │  
 └─test  
 &nbsp;   &emsp;&emsp;     1_SecuredLoan_test.js  &emsp;&emsp;&nbsp;# NFT secured loan test file  

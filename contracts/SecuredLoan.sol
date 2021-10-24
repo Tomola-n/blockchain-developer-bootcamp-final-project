@@ -117,7 +117,7 @@ contract SecuredLoan {
     /// @notice 4. Bidders can cancel their bids and withdraw their ETH.
     /// @dev Cancel the bid and retrieve the Ether deposited in the smart contract.
     function withDrawBidders() public atPhase(phases.bidend) {
-        require(bidderBalance[msg.sender] > 0);
+        require(bidderBalance[msg.sender] > 0); 
         msg.sender.transfer(bidderBalance[msg.sender]);
         bidderBalance[msg.sender] = 0;
         emit WidhDrawETHLog(address(this), msg.sender, bidderBalance[msg.sender]);
@@ -130,13 +130,16 @@ contract SecuredLoan {
         require(exhibitorAddress == msg.sender);
         (successfulBidderAddress) = _addr;
         require(bidderBalance[successfulBidderAddress] > 0);
+       
         uint fee = bidderBalance[successfulBidderAddress] * 5 /100 * _duration / 365;
         exhibitorBalance = bidderBalance[successfulBidderAddress] - fee;
+        bidderBalance[successfulBidderAddress] = 0;
 
         owner.transfer(fee);
+        fee = 0;
+
         exhibitorAddress.transfer(exhibitorBalance);
         exhibitorBalance = 0;
-        bidderBalance[successfulBidderAddress] = 0;
 
         bidderDuration[successfulBidderAddress] = _duration;
         contractTime = block.timestamp;
