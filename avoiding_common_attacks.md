@@ -11,7 +11,6 @@ Here, we describe two avoiding common attacks:
 
 #### Proper Use of `require()`
 - In three functions `borrowFund()`, `repayFund()` and `transferNFT()`, `require()` is used to validate the input and variables before changing the state.
-Validation of inputs and variables before state changes. 
 
 
 ## Smart Contract Pitfalls and Attacks

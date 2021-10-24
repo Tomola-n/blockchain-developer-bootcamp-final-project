@@ -42,8 +42,8 @@ This is to build a new market where NFT can be used more effectively.
 │  &emsp;&emsp;                2_deploy.js  
 │  
 └─test  
-&nbsp;&emsp;&emsp;&emsp;     1_SecuredLoan_test.js  &emsp;&emsp;# NFT secured loan test file  
-&nbsp;&emsp;&emsp;&emsp;     2_NFToken_test.js  &emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;# minted NFT test file  
+&emsp;&emsp;&emsp;     1_SecuredLoan_test.js  &emsp;&emsp;# NFT secured loan test file  
+&emsp;&emsp;&emsp;     2_NFToken_test.js  &emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;# minted NFT test file  
 
 ## Public Ethereum Address for my certification
 0x15a90bfF905908AceFb858681d1Be35C60C2FE04
