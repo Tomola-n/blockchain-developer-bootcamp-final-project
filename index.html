@@ -19,8 +19,9 @@
             <h2>NFT Secured Loan</h2>      
             <div class="text-right">
                 <h6>Network: <span class="showNetwork"></span><h6>
+                <h6>Current account: <span id="current_account"></span></h6>
             </div>    
-            
+
             <h5><span>MESSAGE: </span></h5>
             <h5>- <span id="phase_info"></span></h5>
             <h5>- <span id="info"></span><h5>
@@ -141,15 +142,19 @@
                         if(!err) {
                             if(res == web3.eth.accounts[0]) {
                                 window.isExhibitor = true;
+                                window.exhibitAccount = web3.eth.accounts[0];
                                 document.getElementById("repay_block").style.display = "block";
                                 document.getElementById('info').innerHTML = '<font color="#dc3545">You are the exhibitor.</font>';
+                                document.getElementById('current_account').innerHTML = `<font>${window.exhibitAccount}</font>`;
                             } else {
                                 window.isExhibitor = false;
                                 document.getElementById("bid_block").style.display = "block";
                                 window.loan_contract.getBidderInfoByAddr.call(web3.eth.accounts[0], (err, res) => {
                                     if(!err) {
+                                        window.bidAccount = web3.eth.accounts[0];
                                         window.bidName =　res[0];
                                         window.bidBalance = parseInt(res[1]);
+                                        document.getElementById('current_account').innerHTML = `<font>${window.bidAccount}</font>`;
                                         if(window.bidName == "") {
                                             document.getElementById('info').innerHTML = '<font color="#007bff">You are a bidder. You have not bid.</font>';
                                         } else {
@@ -348,7 +353,9 @@
                     var receivable = document.getElementById('amountReceivable').value;
                     var wei = parseInt(web3.toWei(ether, 'ether'));
                     var weiReceivable = parseInt(web3.toWei(receivable, 'ether'));
-                    if(regist_name == "" || wei == 0 || ether > receivable) {
+                    if(regist_name == "" || wei == 0) {
+                        return;
+                    } else if(ether > receivable) {
                         return;
                     }
                     window.loan_contract.firstBid.sendTransaction(regist_name, duration, weiReceivable, {from:web3.eth.accounts[0], value: wei, gas:5500000}, (err, res) => {    

@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-2.0
 pragma solidity >=0.5.0 <0.9.0;
-import "openzeppelin-solidity/contracts/token/ERC721/IERC721.sol";
+import "../node_modules/openzeppelin-solidity/contracts/token/ERC721/IERC721.sol";
 
 /// @title NFT secured loan
 /// @author T. N
@@ -80,8 +80,8 @@ contract SecuredLoan {
     /// @notice 2. Bidders bid the desired price.
     function firstBid(string memory _name, uint _duration, uint _receivable) public payable {        
         require(bidderBalance[msg.sender] == 0);
-        require(_duration <= 30);
-        require(_receivable <= 2000);
+        require(0 < _duration && _duration < 31);
+        require(0 < _receivable && _receivable < 1501*10**18);
         addBid();
         bidderName[msg.sender] = _name;
         bidderDuration[msg.sender] = _duration;

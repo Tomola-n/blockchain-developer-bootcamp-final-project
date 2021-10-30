@@ -47,3 +47,21 @@ This is to build a new market where NFT can be used more effectively.
 
 ## Public Ethereum Address for my certification
 0x15a90bfF905908AceFb858681d1Be35C60C2FE04
+
+## Hosted on
+
+##  Instructions
+### Installing dependencies for my project
+- `nvm@1.1.7`  
+- `node@8.15.0`  
+- `npm@6.4.1`  
+- `truffle@5.0.3`  
+- `geth@1.8.27-stable`   
+- `dotenv@10.0.0`  
+- `openzeppelin-solidity@2.3.0`  
+- `truffle-hdwallet-provider@1.0.14`  
+- `web3@1.0.0-beta.37`  
+- `express@4.17.1`  
+
+### Accessing or running my project
+### Running my smart contract unit tests and which port a local testnet should be running on

@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-2.0
 pragma solidity >=0.4.21 <0.9.0;
-import "openzeppelin-solidity/contracts/token/ERC721/ERC721Full.sol";
-import "openzeppelin-solidity/contracts/token/ERC721/ERC721Mintable.sol";
+import "../node_modules/openzeppelin-solidity/contracts/token/ERC721/ERC721Full.sol";
+import "../node_modules/openzeppelin-solidity/contracts/token/ERC721/ERC721Mintable.sol";
 
 /// @title NFT secured loan
 /// @author T. N
