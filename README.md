@@ -59,11 +59,17 @@ This is to build a new market where NFT can be used more effectively.
   1. After downloading and extracting `nvm-setup.zip`, you will see `nvm-setup.exe`. 
   1. Double-click `nvm-setup.exe` to install it.  
 - Node.js: `v8.15.0`
-  1. `nvm install 8.15.0` 
-  1. `nvm use 8.15.0` 
+  ```
+  nvm install 8.15.0
+  ``` 
+  ```
+  nvm use 8.15.0
+  ``` 
 - npm: `6.4.1`  
 - truffle: `v5.0.3`
-  1. `npm install -g truffle@5.0.3`
+  ```
+  npm install -g truffle@5.0.3
+  ```
 - geth: `Version 1.8.27-stable`  
   1. (Windows) Open the following geth download page:  
   https://geth.ethereum.org/downloads/
@@ -74,37 +80,54 @@ This is to build a new market where NFT can be used more effectively.
   https://truffleframework.com/ganache
   1. Open the downloaded file and install Ganache.
 - dotenv: `10.0.0`  
-  1. `npm i dotenv`
+  ```
+  npm i dotenv
+  ```
 - openzeppelin-solidity: `2.3.0` 
-  1. `npm install openzeppelin-solidity@2.3.0` 
+  ```
+  npm install openzeppelin-solidity@2.3.0
+  ``` 
 - truffle-hdwallet-provider: `1.0.14`  
-  1. `npm install truffle-hdwallet-provider@1.0.14`
+  ```
+  npm install truffle-hdwallet-provider@1.0.14
+  ```
 - web3: `1.0.0-beta.37`
-  1. `npm install web3@1.0.0-beta.37`
+  ```
+  npm install web3@1.0.0-beta.37
+  ```
 - express: `4.17.1`  
-  1. `npm install express`
+  ```
+  npm install express
+  ```
 
 ### Accessing or running my project
 1. Clone and pull down this repository into a branch via git:  
-`git clone https://github.com/Tomola-n/blockchain-developer-bootcamp-final-project`
-1. Go to the directory you cloned into:  
-`cd blockchain-developer-bootcamp-final-project`
-1. Install the packages required to run the program:  
-`npm install` and install dependencies for my project.  
-1. Run the compilation
+```
+git clone https://github.com/Tomola-n/blockchain-developer-bootcamp-final-project
+```
+2. Go to the directory you cloned into:  
+```
+cd blockchain-developer-bootcamp-final-project
+```
+3. Install the packages required to run the program:  
+```
+npm install
+```  
+and install dependencies for this project (see "Installing dependencies for my project").   
+
+4. Run the compilation
 ```
 truffle compile
 ```
-1. Run the migration
+5. Run the migration
 ```
 truffle migrate --network ropsten
 ```
-1. Start the web server 
+6. Start the web server 
 ```
 node finalproject.js
 ```
-1. Access the following page: 
-http://localhost:3000/
+7. Access the following page: http://localhost:3000/
 
 ### Running my smart contract unit tests and which port a local testnet should be running on
 Connect the geth console to Ganache via RPC.
