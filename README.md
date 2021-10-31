@@ -91,12 +91,18 @@ This is to build a new market where NFT can be used more effectively.
 `cd blockchain-developer-bootcamp-final-project`
 1. Install the packages required to run the program:  
 `npm install` and install dependencies for my project.  
-1. Run the compilation: `truffle compile`
-1. Run the migration: `truffle migrate --network ropsten`
-1. Start the web server: 
-
-``node finalproject.js``
-
+1. Run the compilation
+```
+truffle compile
+```
+1. Run the migration
+```
+truffle migrate --network ropsten
+```
+1. Start the web server 
+```
+node finalproject.js
+```
 1. Access the following page: 
 http://localhost:3000/
 
