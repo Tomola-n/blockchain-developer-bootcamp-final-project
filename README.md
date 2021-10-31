@@ -68,9 +68,13 @@ This is to build a new market where NFT can be used more effectively.
   https://geth.ethereum.org/downloads/
   1. Scroll down and look for "Geth & Tools 1.8.27" in "Stable releases".
   1. Unzip the downloaded zip file and create the Path.
+- Ganache GUI: `v2.5.4`  
+  1. (Windows) Access the following download page and click "DOWNLOAD".
+  https://truffleframework.com/ganache
+  1. Open the downloaded file and install Ganache.
 - dotenv: `10.0.0`  
   1. `npm i dotenv`
-- `openzeppelin-solidity@2.3.0` 
+- openzeppelin-solidity: `2.3.0` 
   1. `npm install openzeppelin-solidity@2.3.0` 
 - truffle-hdwallet-provider: `1.0.14`  
   1. `npm install truffle-hdwallet-provider@1.0.14`
@@ -80,6 +84,8 @@ This is to build a new market where NFT can be used more effectively.
   1. `npm install express`
 
 ### Accessing or running my project
+1. 
+
 ### Running my smart contract unit tests and which port a local testnet should be running on
 
 ## A screencast of my walking through my project
