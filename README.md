@@ -153,11 +153,11 @@ node finalproject.js
     ```
 - Running my smart contract unit tests  
     1. Open another PowerShell screen and run the unit tests
-    ```
+    ```sh
     truffle test
     ```
     2. See output
-    ```
+    ```sh
     Compiling .\contracts\Migrations.sol...
     Compiling .\contracts\NFToken.sol...
     Compiling .\contracts\SecuredLoan.sol...
