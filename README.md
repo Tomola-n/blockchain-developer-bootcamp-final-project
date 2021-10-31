@@ -66,10 +66,10 @@ This is to build a new market where NFT can be used more effectively.
 - geth: `Version 1.8.27-stable`  
   1. (Windows) Open the following geth download page:  
   https://geth.ethereum.org/downloads/
-  1. Scroll down and look for "Geth & Tools 1.8.27" in "Stable releases".
+  1. Scroll down and look for "Geth & Tools 1.8.27" in "Stable releases",
   1. Unzip the downloaded zip file and create the Path.
 - Ganache GUI: `v2.5.4`  
-  1. (Windows) Access the following download page and click "DOWNLOAD".
+  1. (Windows) Access the following download page and click "DOWNLOAD": 
   https://truffleframework.com/ganache
   1. Open the downloaded file and install Ganache.
 - dotenv: `10.0.0`  
@@ -84,8 +84,18 @@ This is to build a new market where NFT can be used more effectively.
   1. `npm install express`
 
 ### Accessing or running my project
-1. 
+1. Clone and pull down this repository into a branch via git:  
+`git clone https://github.com/Tomola-n/blockchain-developer-bootcamp-final-project`
+1. Go to the directory you cloned into:  
+`cd blockchain-developer-bootcamp-final-project`
+1. Install the packages required to run the program:  
+`npm install` and install dependencies for my project.  
+1. Run the compilation: `truffle compile`
+1. Run the migration: `truffle migrate --network ropsten`
+1. Start the web server: `node finalproject.js`
+1. Access the following page: 
+http://localhost:3000/
 
 ### Running my smart contract unit tests and which port a local testnet should be running on
-
+Connect the geth console to Ganache via RPC.
 ## A screencast of my walking through my project
