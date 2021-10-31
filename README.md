@@ -103,11 +103,11 @@ This is to build a new market where NFT can be used more effectively.
 
 ### Accessing or running my project
 1. Clone and pull down this repository into a branch via git:  
-```
+```sh
 git clone https://github.com/Tomola-n/blockchain-developer-bootcamp-final-project
 ```
 2. Go to the directory you cloned into:  
-```
+```sh
 cd blockchain-developer-bootcamp-final-project
 ```
 3. Install the packages required to run the program:  
@@ -157,7 +157,7 @@ node finalproject.js
     truffle test
     ```
     2. See output
-    ```sh
+    ```
     Compiling .\contracts\Migrations.sol...
     Compiling .\contracts\NFToken.sol...
     Compiling .\contracts\SecuredLoan.sol...
