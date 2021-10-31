@@ -26,6 +26,7 @@ This is to build a new market where NFT can be used more effectively.
 │  deployed_address.txt  &emsp;&emsp;&emsp;&emsp;&emsp;# the testnet address and network where your contract(s) have been deployed  
 │  deployed_info.js  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;# deployed information including contract address and abi file  
 │  design_pattern_decisions.md  &emsp;&nbsp;&nbsp;# my design patterns  
+│  finalproject.js  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;# web server program for localhost: 3000   
 │  index.html  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;# frontend interface  
 │  package-lock.json  
 │  README.md  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;# this file  
@@ -50,18 +51,35 @@ This is to build a new market where NFT can be used more effectively.
 
 ## Hosted on
 
-##  Instructions
+## Instructions
 ### Installing dependencies for my project
-- `nvm@1.1.7`  
-- `node@8.15.0`  
-- `npm@6.4.1`  
-- `truffle@5.0.3`  
-- `geth@1.8.27-stable`   
-- `dotenv@10.0.0`  
-- `openzeppelin-solidity@2.3.0`  
-- `truffle-hdwallet-provider@1.0.14`  
-- `web3@1.0.0-beta.37`  
-- `express@4.17.1`  
+- nvm (Node Version Manager): `Running version 1.1.7.`  
+  1. (Windows) Download the nvm installer from the URL below:  
+  https://github.com/coreybutler/nvm-windows/releases
+  1. After downloading and extracting `nvm-setup.zip`, you will see `nvm-setup.exe`. Double-click `nvm-setup.exe` to install it.  
+- Node.js: `v8.15.0`
+  1. `nvm install 8.15.0` 
+  1. `nvm use 8.15.0` 
+- npm: `6.4.1`  
+- truffle: `v5.0.3`
+  1. `npm install -g truffle@5.0.3`
+- geth: `Version 1.8.27-stable`  
+  1. (Windows) Open the following geth download page:  
+  https://geth.ethereum.org/downloads/
+  1. Scroll down and look for "Geth & Tools 1.8.27" in "Stable releases".
+  1. Unzip the downloaded zip file and create the Path.
+- dotenv: `10.0.0`  
+  1. `npm i dotenv`
+- `openzeppelin-solidity@2.3.0` 
+  1. `npm install openzeppelin-solidity@2.3.0` 
+- truffle-hdwallet-provider: `1.0.14`  
+  1. `npm install truffle-hdwallet-provider@1.0.14`
+- web3: `1.0.0-beta.37`
+  1. `npm install web3@1.0.0-beta.37`
+- express: `4.17.1`  
+  1. `npm install express`
 
 ### Accessing or running my project
 ### Running my smart contract unit tests and which port a local testnet should be running on
+
+## A screencast of my walking through my project
