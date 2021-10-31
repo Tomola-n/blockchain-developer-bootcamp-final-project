@@ -56,7 +56,8 @@ This is to build a new market where NFT can be used more effectively.
 - nvm (Node Version Manager): `Running version 1.1.7.`  
   1. (Windows) Download the nvm installer from the URL below:  
   https://github.com/coreybutler/nvm-windows/releases
-  1. After downloading and extracting `nvm-setup.zip`, you will see `nvm-setup.exe`. Double-click `nvm-setup.exe` to install it.  
+  1. After downloading and extracting `nvm-setup.zip`, you will see `nvm-setup.exe`. 
+  1. Double-click `nvm-setup.exe` to install it.  
 - Node.js: `v8.15.0`
   1. `nvm install 8.15.0` 
   1. `nvm use 8.15.0` 
@@ -92,7 +93,10 @@ This is to build a new market where NFT can be used more effectively.
 `npm install` and install dependencies for my project.  
 1. Run the compilation: `truffle compile`
 1. Run the migration: `truffle migrate --network ropsten`
-1. Start the web server: `node finalproject.js`
+1. Start the web server: 
+
+``node finalproject.js``
+
 1. Access the following page: 
 http://localhost:3000/
 
