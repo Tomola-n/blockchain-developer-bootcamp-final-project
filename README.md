@@ -116,7 +116,7 @@ npm install
 and install dependencies for this project (see "Installing dependencies for my project").   
 
 4. Run the compilation
-```
+```PowerShell
 truffle compile
 ```
 5. Run the migration
