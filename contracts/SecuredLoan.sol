@@ -55,7 +55,7 @@ contract SecuredLoan {
         owner = msg.sender;
     }
 
-    /// @notice 1. The exhibitor puts the NFT in the smart contract.
+    /// @notice 1. The exhibitor puts his NFT in the smart contract.
     /// @dev Accept the exhibit. Move phase from exhibit to bid. 
     function exhibitNFT(address _addr, uint _tokenId) public atPhase(phases.exhibit) {
         set721ContractAddress(_addr);
@@ -118,7 +118,7 @@ contract SecuredLoan {
     
     /// @notice 4. Bidders can cancel their bids and withdraw their ETH.
     /// @dev Cancel the bid and retrieve the Ether deposited in the smart contract.
-    function withDrawBidders() public atPhase(phases.bidend) {
+    function withDrawBidders() public {
         require(bidderBalance[msg.sender] > 0); 
         msg.sender.transfer(bidderBalance[msg.sender]);
         bidderBalance[msg.sender] = 0;
@@ -148,7 +148,7 @@ contract SecuredLoan {
         phase = phases.bidend;
     }
     
-    /// @notice 6. The exhibitor repays the borrowed fund and interest to the successful bidder.
+    /// @notice 6. The exhibitor repays his borrowed fund and interest to the successful bidder.
     /// @dev Move phase from bidend to repayed.
     function repayFund() public payable atPhase(phases.bidend) checkTime(bidderDuration[successfulBidderAddress]) {
         require(exhibitorAddress == msg.sender);

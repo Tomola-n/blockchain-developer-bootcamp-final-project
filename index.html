@@ -355,7 +355,7 @@
                     var weiReceivable = parseInt(web3.toWei(receivable, 'ether'));
                     if(regist_name == "" || wei == 0) {
                         return;
-                    } else if(ether > receivable) {
+                    } else if(wei > weiReceivable) {
                         return;
                     }
                     window.loan_contract.firstBid.sendTransaction(regist_name, duration, weiReceivable, {from:web3.eth.accounts[0], value: wei, gas:5500000}, (err, res) => {    

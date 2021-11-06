@@ -13,12 +13,12 @@ Since NFTs are valuable, NFT owners can also use them as collateral to borrow st
 This is to build a new market where NFT can be used more effectively.
 
 ### Loan Contract Workflow
-1. The exhibitor puts the NFT in the smart contract.
+1. The exhibitor puts his NFT in the smart contract.
 2. Bidders bid the desired price.
 3. The exhibitor makes a successful bid at a price and duration that meets the conditions.
 4. Bidders can cancel their bids and withdraw their ETH. 
 5. At the same time as the successful bid, the exhibitor can borrow a fund from the successful bidder, where the fee (5%) to the administrator is deducted from the successful bid amount.
-6. The exhibitor repays the borrowed fund and interest to the successful bidder.
+6. The exhibitor repays his borrowed fund and interest to the successful bidder.
 7. If there is no repayment from the exhibitor at the time of contract expiration, the successful bidder can withdraw the NFT from the smart contract.
 
 ## Project Directory Structure  
@@ -47,13 +47,13 @@ This is to build a new market where NFT can be used more effectively.
 &emsp;&emsp;&emsp;     2_NFToken_test.js  &emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;# minted NFT test file  
 
 ## Public Ethereum Address for my certification
-0x15a90bfF905908AceFb858681d1Be35C60C2FE04
+0xA2F91444b7163A8bF0F9F36fd022ea0F551aEE22
 
 ## Hosted on
 
 
 ## Instructions
-### Installing dependencies for my project
+### Installing dependencies for this project
 - nvm (Node Version Manager): `Running version 1.1.7.`  
   1. (Windows) Download the nvm installer from the URL below:  
   https://github.com/coreybutler/nvm-windows/releases
@@ -101,7 +101,7 @@ This is to build a new market where NFT can be used more effectively.
   npm install express
   ```
 
-### Accessing or running my project
+### Accessing or running this project
 1. Clone and pull down this repository into a branch via git:  
 ```sh
 git clone https://github.com/Tomola-n/blockchain-developer-bootcamp-final-project
@@ -130,7 +130,7 @@ node finalproject.js
 ```
 7. Access the following page: http://localhost:3000/
 
-### Running my smart contract unit tests and which port a local testnet should be running on
+### Running smart contract unit tests and which port a local testnet should be running on
 - Connect the geth console to Ganache GUI via RPC.  
     1. Configure the following settings in the "SERVER" of the Ganache configuration screen:
         - Set "HOSTNAME" to `127.0.0.1`,
@@ -158,6 +158,8 @@ node finalproject.js
     ```
     2. See output
     ```
+    Using network 'development'.
+    
     Compiling .\contracts\Migrations.sol...
     Compiling .\contracts\NFToken.sol...
     Compiling .\contracts\SecuredLoan.sol...
@@ -195,4 +197,5 @@ node finalproject.js
   7 passing (4s)
     ```
 
-## A screencast of my walking through my project
+## A screencast of my walking through this project
+https://www.loom.com/share/86e3e02ee4ec43c896ec4ffb843261a1
