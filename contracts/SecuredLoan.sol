@@ -37,15 +37,16 @@ contract SecuredLoan {
 
     /// @dev Check if the current time is before the due date.
     modifier checkTime(uint _duration) {
-        // uint due = contractTime + _duration * 86400 seconds;
-        uint due = contractTime + _duration * 10 seconds;
+        uint due = contractTime + _duration * 86400 seconds;
+        //uint due = contractTime + _duration * 10 seconds;
         require(block.timestamp < due);
         _;
     }
 
     /// @dev Check if the current time is past the due date.
     modifier expireTime(uint _duration) {
-        uint due = contractTime + _duration * 10 seconds;
+        //uint due = contractTime + _duration * 10 seconds;
+        uint due = contractTime + _duration * 86400 seconds;
         require(due < block.timestamp);
         _;
     }

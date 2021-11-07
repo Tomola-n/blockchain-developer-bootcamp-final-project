@@ -196,6 +196,12 @@ node finalproject.js
 
   7 passing (4s)
     ```
+### Remember: DO NOT UPLOAD SENSITIVE INFORMATION TO GITHUB OR A PUBLIC SITE
+Your Infura account details, MetaMask mnemonics, any private keys, etc., should all be in a `.env` file which you add to your `.gitignore` in your project locally.  
+
+Read more about that as follows:  
+https://blog.infura.io/how-to-use-dotenv-to-enhance-basic-security-within-your-dapp/
+
 
 ## A screencast of my walking through this project
 https://www.loom.com/share/86e3e02ee4ec43c896ec4ffb843261a1
