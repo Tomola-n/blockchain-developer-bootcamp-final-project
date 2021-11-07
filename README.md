@@ -50,7 +50,8 @@ This is to build a new market where NFT can be used more effectively.
 0xA2F91444b7163A8bF0F9F36fd022ea0F551aEE22
 
 ## Hosted on
-
+Github Pages:  
+https://tomola-n.github.io/blockchain-developer-bootcamp-final-project/
 
 ## Instructions
 ### Installing dependencies for this project
