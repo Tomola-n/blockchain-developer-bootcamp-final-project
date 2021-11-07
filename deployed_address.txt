@@ -1,3 +1,91 @@
-- Testnet address: 
+Network: Ropsten  
 
-- Network: Ropsten  
+Testnet address: 
+- Deploying 'NFToken.sol'
+contract address:    0x28E1C8fF3CB3199bc01C1f01Cb3E47322799aAdb
+
+- Deploying 'SecuredLoan.sol'
+contract address:    0x49f85cBBCc6F27c916b1d6cC91889b907DD8A26D
+
+
+Migration output:
+----------------------------------------------------------------------------------------
+⚠️  Important ⚠️
+If you're using an HDWalletProvider, it must be Web3 1.0 enabled or your migration will hang.
+
+
+Starting migrations...
+======================
+> Network name:    'ropsten'
+> Network id:      3
+> Block gas limit: 8000000
+
+
+1_initial_migration.js
+======================
+
+   Deploying 'Migrations'
+   ----------------------
+   > transaction hash:    0xf2b091554ec54bb6ade99f97f7af6f53a7e444944633214e385811137f68c320
+   > Blocks: 1            Seconds: 5
+   > contract address:    0x5b2433d9561e0bf171858B863ecA8AcB5e67b463
+   > account:             0x15a90bfF905908AceFb858681d1Be35C60C2FE04
+   > balance:             6.006112389
+   > gas used:            207901
+   > gas price:           20 gwei
+   > value sent:          0 ETH
+   > total cost:          0.00415802 ETH
+
+   Pausing for 2 confirmations...
+   ------------------------------
+   > confirmation number: 1 (block: 11378346)
+   > confirmation number: 2 (block: 11378347)
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:          0.00415802 ETH
+
+
+2_deploy.js
+===========
+
+   Deploying 'NFToken'
+   -------------------
+   > transaction hash:    0x7f38449ed6a92931492d7ae8b2e9b57d842d18f8e431331cb1f491cbeb27ee9e
+   > Blocks: 1            Seconds: 9
+   > contract address:    0x28E1C8fF3CB3199bc01C1f01Cb3E47322799aAdb
+   > account:             0x15a90bfF905908AceFb858681d1Be35C60C2FE04
+   > balance:             5.930183369
+   > gas used:            3796451
+   > gas price:           20 gwei
+   > value sent:          0 ETH
+   > total cost:          0.07592902 ETH
+
+   Pausing for 2 confirmations...
+   ------------------------------
+   > confirmation number: 2 (block: 11378351)
+
+   Deploying 'SecuredLoan'
+   -----------------------
+   > transaction hash:    0xb4f82f2182b701114aef9d06983fc7f4e22cea2218271956b993314db0bbea19
+   > Blocks: 1            Seconds: 9
+   > contract address:    0x49f85cBBCc6F27c916b1d6cC91889b907DD8A26D
+   > account:             0x15a90bfF905908AceFb858681d1Be35C60C2FE04
+   > balance:             5.885926469
+   > gas used:            1832671
+   > gas price:           20 gwei
+   > value sent:          0 ETH
+   > total cost:          0.03665342 ETH
+
+   Pausing for 2 confirmations...
+   ------------------------------
+   > confirmation number: 1 (block: 11378355)
+   > confirmation number: 2 (block: 11378356)
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:          0.11258244 ETH
+
+
+Summary
+=======
+> Total deployments:   3
+> Final cost:          0.11674046 ETH
