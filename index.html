@@ -115,7 +115,8 @@
                     </table>
             </div>
 
-             
+
+            <script src="https://unpkg.com/@metamask/legacy-web3@latest/dist/metamask.web3.min.js"></script> <!-- add -->
             <script src="./deployed_info.js"></script>
             <script>
                 window.onload = () => {
@@ -152,7 +153,7 @@
                                 window.loan_contract.getBidderInfoByAddr.call(web3.eth.accounts[0], (err, res) => {
                                     if(!err) {
                                         window.bidAccount = web3.eth.accounts[0];
-                                        window.bidName =　res[0];
+                                        window.bidName = res[0];
                                         window.bidBalance = parseInt(res[1]);
                                         document.getElementById('current_account').innerHTML = `<font>${window.bidAccount}</font>`;
                                         if(window.bidName == "") {
@@ -171,7 +172,7 @@
                             console.log("exhibitorAddress err: " + err);
                         }
                     });
-                }              
+                }
 
                 function mainLoop() {
                     getPhase();             // Get phase
